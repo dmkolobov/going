@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+user_one:
+  email: some_user@gmail.com
+  password_digest: <%= BCrypt::Password.create("wazzup")%>
+
+user_two:
+  email: another_user@gmail.com
+  password_digest: <%= BCrypt::Password.create("nope")%>
