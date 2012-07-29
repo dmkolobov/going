@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user = User.find_by_email( params[:user][:email] )
-  	if user && user.authenticate( params[:user][:password] )
-  		session[:user_id] = user.id
-  		redirect_to root_url, :notice => "Logged in."
+  	@user = User.find_by_email( params[:user][:email] )
+  	if @user && @user.authenticate( params[:user][:password] )
+  		login( @user )
+      redirect_to root_url
   	else
   		flash[:error] = "The email/password combination you have provided does not match any users on this site."
   		render :new
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  	session[:user_id] = nil
-  	redirect_to root_url, :notice => "Logged Out."
+  	logout
+    redirect_to root_url
   end
 end

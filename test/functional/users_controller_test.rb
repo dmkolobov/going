@@ -59,4 +59,9 @@ class UsersControllerTest < ActionController::TestCase
   	put :update, {:id=>session[:user_id],:user=>{:old_pass=>"wrong_pass", :password=>"new_pass", :password_confirmation=>"new_pass"}}
   	assert flash[:error]
   end
+
+  test "change email" do
+  	session[:user_id] = @user_one.id
+  	
+  end
 end
