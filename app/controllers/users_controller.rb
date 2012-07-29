@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 			login @user
 			redirect_to root_url
 		else
+			flash[:error] = @user.errors.empty? ? "An error has occured, please try again" : @user.errors.full_messages.to_sentence 
 			render :new
 		end
 	end
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
 		if @user.update_attributes( params[:user] )
 			redirect_to @user
 		else
+			flash[:error] = @user.errors.empty? ? "An error has occured, please try again" : @user.errors.full_messages.to_sentence 
 			render :edit
 		end
 	end

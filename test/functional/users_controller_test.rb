@@ -4,42 +4,47 @@ class UsersControllerTest < ActionController::TestCase
  	fixtures :users
   
   def setup
-    @user_one = users(:user_one)
+    @dmitry = users(:dmitry)
+    @patrick = users(:patrick)
+
     @controller = UsersController.new
-    @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
+    @request = ActionController::TestRequest.new
     @request.host = "localhost"
   end
 
+  test "new user" do
+    get :new 
+    assert_response :success
+    assert_template "new"
+    assert_not_nil assigns["user"]
+  end
+
+  test "edit user" do
+    get :edit, :id => @dmitry.id
+    assert_response :success
+    assert_template "edit"
+    assert_not_nil assigns["user"]
+    assert_equal @dmitry.attributes, assigns["user"].attributes
+  end
+
+  test "show user" do
+  	get :show, :id => @dmitry.id
+  	assert_response :success
+  	assert_template "show"
+  	assert_not_nil assigns["user"]
+  	assert_equal @dmitry.attributes, assigns["user"].attributes
+  end
+
   test "create user" do
-  	post :create, {:user=>{:email=>'new_user@gmail.com', :password=>"password", :password_confirmation=>"password"}}
-  	assert_not_nil session[:user_id]
-  	assert_redirected_to root_url
-  end
-
-   test "attempt to create a new user with unmatching passwords" do
-  	post :create, {:user=>{:email=>'new_user@gmail.com', :password=>"password", :password_confirmation=>"different_pass"}}
-  	assert_nil session[:user_id]
 
   end
 
-  test "attempt to create new user with a taken email" do
-  	post :create, {:user=>{:email=>'some_user@gmail.com', :password=>"password", :password_confirmation=>"password"}}
-  	assert_nil session[:user_id]
+  test "update user" do
+
   end
 
-  test "change password" do
-  	session[:user_id] = @user_one.id
+  test "destroy user" do 
 
-  	put :update, {:id=>session[:user_id], :user=>{:email=>"some_user@gmail.com", :password=>"new_pass", :password_confirmation=>"new_pass"}}
-  	assert_response :found
-  end
-
-
-  test "change email" do
-  	session[:user_id] = @user_one.id
-  	
-  	put :update, {:id=>session[:user_id], :user=>{:email=>"new_email@gmail.com", :password=>"wazzup", :password_confirmation=>"wazzup"}}
-  	assert_response :found
   end
 end
