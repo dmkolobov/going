@@ -21,30 +21,53 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "edit user" do
-    get :edit, :id => @dmitry.id
+    session[:user_id] = @dmitry.id
+
+    #user should be able to edit itself
+    get :edit, :id => session[:user_id]
     assert_response :success
-    assert_template "edit"
-    assert_not_nil assigns["user"]
     assert_equal @dmitry.attributes, assigns["user"].attributes
   end
 
   test "show user" do
   	get :show, :id => @dmitry.id
   	assert_response :success
-  	assert_template "show"
-  	assert_not_nil assigns["user"]
   	assert_equal @dmitry.attributes, assigns["user"].attributes
   end
 
   test "create user" do
-
+    post :create, {:user=>{:email=>"new_user@gmail.com", :password=>"new_pass",:password_confirmation=>"new_pass"}}
+    assert_redirected_to root_url
+    assert_not_nil session[:user_id], "New user was not logged in."
   end
 
   test "update user" do
+    #log user in
+    session[:user_id] = @dmitry.id
 
+    put :update, {:id=>session[:user_id], :user=>{:email=>@dmitry.email, :password=>"new_pass",:password_confirmation=>"new_pass"}}
+    assert_redirected_to user_path(@dmitry)
   end
 
   test "destroy user" do 
+    session[:user_id] = @dmitry.id
 
+    delete :destroy, {:id => session[:user_id], :password=>"wazzup", :password_confirmation=>"wazzup"}
+    assert_redirected_to root_url
+    assert_nil session[:user_id]
+  end
+
+  test "user should not be able to destroy another user" do
+    session[:user_id] = @dmitry.id
+
+    delete :destroy, {:id=> @patrick.id, :password=>"nope", :password_confirmation=>"nope"}
+    assert_response 403, "User was able to delete another user's account. Not good."
+  end
+
+  test "user should not be able to change another user" do
+    session[:user_id] = @dmitry.id
+
+    put :update,  {:id=>@patrick.id, :user=>{:email=>@patrick.email, :password=>"hacked_pass", :password=>"hacked_pass"}}
+    assert_response 403, "User was able to update another user's account. Not good."
   end
 end

@@ -35,5 +35,6 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+		render :nothing=>true
 	end
 end

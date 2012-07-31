@@ -4,7 +4,7 @@ class SessionsControllerTest < ActionController::TestCase
   fixtures :users
   
   def setup
-    @user_one = users(:user_one)
+    @dmitry = users(:dmitry)
     @controller = SessionsController.new
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
@@ -15,10 +15,10 @@ class SessionsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
 
-    post :create, {:user=>{:email=>"some_user@gmail.com", :password=>"wazzup"}}
+    post :create, {:user=>{:email=>@dmitry.email, :password=>"wazzup"}}
     assert_redirected_to root_url
 
-    assert_equal @user_one.id, session[:user_id]
+    assert_equal @dmitry.id, session[:user_id]
   end
 
   test "user should logout" do
@@ -28,10 +28,12 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "user should not be logged in if provided the wrong credentials" do
-    post :create, {:user=>{:email=>"some_user@gmail.com", :password=>"wrong_pass"}}
+    post :create, {:user=>{:email=>@dmitry.email, :password=>"wrong_pass"}}
     assert_nil session[:user_id]
+    assert_template :new
 
-    post :create, {:user=>{:email=>"some_user@gmail.com", :password=>"wrong_pass"}}
+    post :create, {:user=>{:email=>"wrong_email@gmail.com", :password=>"wrong_pass"}}
     assert_nil session[:user_id]  
+    assert_template :new
   end
 end
