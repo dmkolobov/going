@@ -1,0 +1,18 @@
+%h1{:style=>"margin: 0px auto;text-align:center;"} Login
+
+= form_tag login_path do 
+	- if flash.now[:error]
+		.error_messages
+			%h1 Something Went Wrong
+			%ul
+				%li 
+					=flash.now[:error]
+	= label_tag :email
+	%br
+	= text_field_tag :email, params[:email]
+	%br
+	= label_tag :password
+	%br 
+	= password_field_tag :password, params[:password]
+	%br
+	= submit_tag "Log In"
