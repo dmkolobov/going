@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	ROLES = %w[superadmin admin standard]
+	ROLES = %w[standard]
 
   attr_accessible :email, :password, :password_confirmation, :username
   has_secure_password
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
 
-  after_create :assign_default_role
+  before_create :assign_default_role
 
   def assign_default_role
     self.roles=["standard"]

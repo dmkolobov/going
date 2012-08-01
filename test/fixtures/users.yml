@@ -3,11 +3,11 @@
 dmitry:
   email: dkolobov@gmail.com
   username: DmitryKolobov
-  roles_mask: 4
+  roles_mask: 1
   password_digest: <%= BCrypt::Password.create("wazzup")%>
 
 patrick:
   email: pcason@gmail.com
   username: cereallarceny
-  roles_mask: 4
+  roles_mask: 1
   password_digest: <%= BCrypt::Password.create("nope")%>
