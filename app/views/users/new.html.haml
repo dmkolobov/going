@@ -1,0 +1,26 @@
+%h1{:style=>"margin: 0px auto;text-align:center;"} Sign In
+= form_for @user do |f|
+
+	= if @user.errors.any?
+		.error_messages
+			%h1 Something Went wrong
+			%ul
+				-for message in @user.errors.full_messages
+					%li 
+						= message
+
+	= f.label :email
+	%br
+	= f.text_field :email
+	%br
+	= f.label :username
+	%br
+	= f.text_field :username
+	%br
+	= f.label :password
+	%br
+	= f.password_field :password
+	%br
+	= f.password_field :password_confirmation
+	%br
+	= f.submit

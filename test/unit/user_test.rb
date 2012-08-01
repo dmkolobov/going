@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
 	end
 
   test "create user" do
-    user = User.new(:email => "new_user@gmail.com", :password => "somepass", :password_confirmation => "somepass")
+    user = User.new(:email => "new_user@gmail.com", :username=>"new_user_name", :password => "somepass", :password_confirmation => "somepass")
 
 	  assert_not_nil :user
 	 	assert user.save
@@ -30,7 +30,7 @@ class UserTest < ActiveSupport::TestCase
 	end
 
 	test "roles" do
-		user = User.new(:email => "new_user@gmail.com", :password=>"somepass", :password_confirmation => "somepass")
+		user = User.new(:email => "new_user@gmail.com", :username=>"new_user_name", :password=>"somepass", :password_confirmation => "somepass")
 		assert user.save
 		assert user.is? :standard
 	end

@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	@user = User.find_by_email( params[:user][:email] )
-  	if @user && @user.authenticate( params[:user][:password] )
+  	@user = User.find_by_email( params[:email] )
+  	if @user && @user.authenticate( params[:password] )
   		login( @user )
       redirect_to root_url
   	else

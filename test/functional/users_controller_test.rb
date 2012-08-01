@@ -36,7 +36,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "create user" do
-    post :create, {:user=>{:email=>"new_user@gmail.com", :password=>"new_pass",:password_confirmation=>"new_pass"}}
+    post :create, {:user=>{:email=>"new_user@gmail.com", :username=>"new_user_name", :password=>"new_pass",:password_confirmation=>"new_pass"}}
     assert_redirected_to root_url
     assert_not_nil session[:user_id], "New user was not logged in."
   end

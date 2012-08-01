@@ -15,7 +15,7 @@ class SessionsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
 
-    post :create, {:user=>{:email=>@dmitry.email, :password=>"wazzup"}}
+    post :create, {:email=>@dmitry.email, :password=>"wazzup"}
     assert_redirected_to root_url
 
     assert_equal @dmitry.id, session[:user_id]
@@ -28,11 +28,11 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "user should not be logged in if provided the wrong credentials" do
-    post :create, {:user=>{:email=>@dmitry.email, :password=>"wrong_pass"}}
+    post :create, {:email=>@dmitry.email, :password=>"wrong_pass"}
     assert_nil session[:user_id]
     assert_template :new
 
-    post :create, {:user=>{:email=>"wrong_email@gmail.com", :password=>"wrong_pass"}}
+    post :create, {:email=>"wrong_email@gmail.com", :password=>"wrong_pass"}
     assert_nil session[:user_id]  
     assert_template :new
   end
