@@ -11,8 +11,14 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :password_confirmation, :on => :create
 
-  def roles=(roles)
-  	self.roles_mask = (roles & ROLES ).map {|r| 2**ROLES.index(r) }.sum
+  after_create :assign_default_role
+
+  def assign_default_role
+    self.roles=["standard"]
+  end
+
+  def roles=(roles)    
+    self.roles_mask = (roles & ROLES ).map {|r| 2**ROLES.index(r) }.sum
   end
 
   def roles

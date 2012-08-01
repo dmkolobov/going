@@ -31,9 +31,7 @@ class UserTest < ActiveSupport::TestCase
 
 	test "roles" do
 		user = User.new(:email => "new_user@gmail.com", :password=>"somepass", :password_confirmation => "somepass")
-		user.roles = ["standard","admin"]
 		assert user.save
 		assert user.is? :standard
-		assert user.is? :admin
 	end
 end
