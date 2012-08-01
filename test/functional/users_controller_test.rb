@@ -61,13 +61,13 @@ class UsersControllerTest < ActionController::TestCase
     session[:user_id] = @dmitry.id
 
     delete :destroy, {:id=> @patrick.id, :password=>"nope", :password_confirmation=>"nope"}
-    assert_response 403, "User was able to delete another user's account. Not good."
+    assert_redirected_to root_url
   end
 
   test "user should not be able to change another user" do
     session[:user_id] = @dmitry.id
 
     put :update,  {:id=>@patrick.id, :user=>{:email=>@patrick.email, :password=>"hacked_pass", :password=>"hacked_pass"}}
-    assert_response 403, "User was able to update another user's account. Not good."
+    assert_redirected_to root_url
   end
 end

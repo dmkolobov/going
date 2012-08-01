@@ -2,8 +2,10 @@
 
 dmitry:
   email: dkolobov@gmail.com
+  roles_mask: 4
   password_digest: <%= BCrypt::Password.create("wazzup")%>
 
 patrick:
   email: pcason@gmail.com
+  roles_mask: 4
   password_digest: <%= BCrypt::Password.create("nope")%>
