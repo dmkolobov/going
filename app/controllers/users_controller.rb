@@ -37,6 +37,14 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		render :nothing=>true
+		@user = User.find( params[:id] )
+
+		if @user.id == current_user.id && params[:password] == params[:password_confirmation]
+			logout
+			@user.destroy
+			redirect_to root_url
+		else
+			render :edit
+		end
 	end
 end
