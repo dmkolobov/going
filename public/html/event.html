@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>going.fm</title>
+
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link href="style.css" rel="stylesheet" type="text/css">
+<!--[if !IE 7]><style type="text/css"> #wrap { display: table; height: 100%; }</style><![endif]-->
+<link href="jquery-ui-theme.css" rel="stylesheet" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+</head>
+
+<body>
+	<div id="wrap">
+    	<div id="header">
+        	<div class="divCenter">
+                <h1 class="logo"><a href="index.html">going.fm</a></h1>
+                <ul class="loginNav">
+                    <li><a href="signup.html">Sign up</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    	<div id="main">
+            <h2 class="textCenter">Name of Event</h2>
+            <p class="textCenter">7:00PM - 10:00PM</p>
+            <p class="host textCenter">Hosted by <a href="user.html">Bertrand Russell</a></p>
+            <div class="twoThirds leftAlign spacing">
+            	<h4>Description:</h4>
+            	<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra volutpat eros et tincidunt. Donec ac leo nec nulla suscipit laoreet ut nec augue. Proin eleifend auctor pretium. Integer aliquet molestie mi, vitae dictum augue tempor at. Curabitur pulvinar semper dignissim.</p>
+                <form id="goingForm" action="" method="POST">
+                	<input type="button" id="goingButton" value="I'm Going!">
+                </form>
+                <p class="numPeople">66 people are <span class="lobster">going</span></p>
+            </div>
+            <div class="oneThird rightAlign spacing">
+            	<iframe width="300" height="300" class="rightAlign" style="border: 1px solid #CCC;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=666+West+End+Avenue,+Nashville,+TN&amp;aq=1&amp;oq=666+west+end+&amp;sll=37.6,-95.665&amp;sspn=40.894464,72.949219&amp;ie=UTF8&amp;hq=&amp;hnear=West+End+Ave,+Nashville,+Tennessee&amp;t=m&amp;ll=36.142034,-86.816111&amp;spn=0.020794,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                <div class="clear"></div>
+                <p class="textRight smallSpacing">666 West End Avenue</p>
+                <p class="textRight">Nashville, TN 37027</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    	<p>Copyright &copy; <a href="index.html">going.fm</a>. All that shit's reserved.</p>
+    </div>
+    
+    <script src="application.js"></script>
+</body>
+</html>

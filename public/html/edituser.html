@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>going.fm</title>
+
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link href="style.css" rel="stylesheet" type="text/css">
+<!--[if !IE 7]><style type="text/css"> #wrap { display: table; height: 100%; }</style><![endif]-->
+<link href="jquery-ui-theme.css" rel="stylesheet" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+</head>
+
+<body>
+	<div id="wrap">
+    	<div id="header">
+        	<div class="divCenter">
+                <h1 class="logo"><a href="index.html">going.fm</a></h1>
+                <ul class="loginNav">
+                    <li><a href="signup.html">Sign up</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    	<div id="main">
+            <div class="twoThirds leftAlign spacing">
+            	<h2>Bertrand Russell</h2>
+                <form id="editMeForm" action="" method="POST">
+                    <fieldset>
+                        <input type="text" id="editMeEmail" placeholder="Email address" value="bertrand@going.fm">
+                        <input type="password" id="editMePass1" placeholder="Password">
+                        <input type="password" id="editMePass2" placeholder="Password again">
+                        <input type="text" id="editMeLocation" placeholder="Default location" value="Nashville, TN">
+                        <input type="submit" id="editMeSubmit" value="Submit">
+                    </fieldset>
+                </form>
+            </div>
+            <div class="oneThird rightAlign spacing">
+            	<img src="images/user-default.jpg" class="rightAlign" style="border: 1px solid #CCC;" alt="">
+                <div class="clear"></div>
+                <form id="uploadPicForm" action="" method="POST">
+                	<input type="button" id="uploadPicButton" value="Change Picture">
+                </form>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    	<p>Copyright &copy; <a href="index.html">going.fm</a>. All that shit's reserved.</p>
+    </div>
+    
+    <script src="application.js"></script>
+</body>
+</html>
