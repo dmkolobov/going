@@ -3,7 +3,7 @@
 = form_tag login_path, :id => 'login_user' do 
 	- if flash.now[:error]
 		.error_messages
-			%h1 Something Went Wrong
+			%h4 Houston, we have a problem:
 			%ul
 				%li 
 					=flash.now[:error]

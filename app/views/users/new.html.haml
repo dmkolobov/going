@@ -2,7 +2,7 @@
 = form_for @user do |f|
 	= if @user.errors.any?
 		.error_messages
-			%h1 Something Went wrong
+			%h4 Houston, we have a problem:
 			%ul
 				-for message in @user.errors.full_messages
 					%li 
