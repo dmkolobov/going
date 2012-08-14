@@ -1,10 +1,11 @@
-%br
-%br
-Whats Happening in?
-%br
-Nashville
-%br
-%ul
-	%li Event 1
-	%li Event 2
-	%li Event 3
+%h1.textCenter
+  What's
+  %span.lobster going
+  on in...
+%form#homeSearch{:action => "", :method => "POST"}
+  %fieldset
+    %input#homeInput{:placeholder => "Type a city...", :type => "text"}
+      %input#homeSubmit{:disabled => "", :type => "submit", :value => ""}
+%form#addEventForm{:action => "", :method => "POST"}
+  %fieldset
+    %input#addEvent{:type => "button", :value => "Add Event"}
