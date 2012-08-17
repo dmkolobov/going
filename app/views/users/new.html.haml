@@ -1,26 +1,15 @@
-%h1{:style=>"margin: 0px auto;text-align:center;"} Sign In
+%h1.textCenter Well, hey there pal!
 = form_for @user do |f|
-
 	= if @user.errors.any?
 		.error_messages
-			%h1 Something Went wrong
+			%h4 Houston, we have a problem:
 			%ul
 				-for message in @user.errors.full_messages
 					%li 
 						= message
-
-	= f.label :email
-	%br
-	= f.text_field :email
-	%br
-	= f.label :username
-	%br
-	= f.text_field :username
-	%br
-	= f.label :password
-	%br
-	= f.password_field :password
-	%br
-	= f.password_field :password_confirmation
-	%br
-	= f.submit
+	%fieldset
+		= f.text_field :email, :placeholder => "Email address"
+		= f.text_field :username, :placeholder => "Username"
+		= f.password_field :password, :placeholder => "Password"
+		= f.password_field :password_confirmation, :placeholder => "Password again"
+		= f.submit

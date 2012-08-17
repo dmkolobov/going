@@ -1,18 +1,13 @@
-%h1{:style=>"margin: 0px auto;text-align:center;"} Login
+%h1.textCenter Welcome back friend!
 
-= form_tag login_path do 
+= form_tag login_path, :id => 'login_user' do 
 	- if flash.now[:error]
 		.error_messages
-			%h1 Something Went Wrong
+			%h4 Houston, we have a problem:
 			%ul
 				%li 
 					=flash.now[:error]
-	= label_tag :email
-	%br
-	= text_field_tag :email, params[:email]
-	%br
-	= label_tag :password
-	%br 
-	= password_field_tag :password, params[:password]
-	%br
-	= submit_tag "Log In"
+	%fieldset
+		= text_field_tag :email, params[:email], :placeholder => "Email address"
+		= password_field_tag :password, params[:password], :placeholder => "Password"
+		= submit_tag "Log In"
