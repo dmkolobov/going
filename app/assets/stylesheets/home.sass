@@ -1,26 +1,386 @@
-body
-	:background-image url("tiny_grid.png") 
+@charset "UTF-8"
 
-#container
-	:width 600px
-	:padding 20px
-	:margin 100px auto 
-	:background #FFF
+/*
+ *	going.fm
+ *	Front-end: Patrick Cason
+ *	Back-end: Dmitry Kolobov
+
+/* Fonts
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lobster)
+
+@font-face
+  font-family: 'Museo'
+  src: url('museo_slab_500-webfont.eot')
+  src: url('museo_slab_500-webfont.eot?#iefix') format("embedded-opentype"), url('museo_slab_500-webfont.woff') format("woff"), url('museo_slab_500-webfont.ttf') format("truetype"), url('museo_slab_500-webfont.svg#Museo') format("svg")
+  font-weight: normal
+  font-style: normal
+
+
+/* Site-wide
+
+*
+  margin: 0
+  padding: 0
+  outline: 0
+  border: 0
+
+html
+  overflow-x: hidden
+  overflow-y: scroll
+  height: 100%
+
+body
+  height: 100%
+  background: url(background.jpg) top center repeat
+  font-size: 16px
+  font-family: 'Droid Sans', sans-serif
+  text-rendering: optimizeLegibility
+
+a
+  color: #4dbce9
+  text-decoration: none
+  -webkit-transition: color 0.25s linear
+  -moz-transition: color 0.25s linear
+  -o-transition: color 0.25s linear
+  transition: color 0.25s linear
+  &:hover
+    color: #d1e751
+
+h1, h2, h3, h4
+  font-family: 'Museo', sans-serif
+  font-weight: bold
+  padding: 5px 0px
+  text-shadow: 1px 1px 0px #FFF
+
+h1
+  font-size: 3.5em
+
+h2
+  font-size: 2.5em
+
+h3
+  font-size: 2em
+
+h4
+  font-size: 1.25em
+  font-family: 'Droid Sans', sans-serif
+  font-weight: bold
+
+input, textarea
+  font-family: 'Museo', sans-serif
+  font-weight: 500
+
+.lobster
+  font-family: 'Lobster', sans-serif
+  color: #4dbce9
+  font-weight: normal
+
+.textLeft
+  text-align: left
+
+.textCenter
+  text-align: center
+
+.textRight
+  text-align: right
+
+.divCenter
+  position: relative
+  width: 960px
+  display: block
+  overflow: hidden
+  margin: 0 auto
+
+.clear
+  clear: both
+
+.twoThirds
+  width: 66.6666%
+  overflow: hidden
+
+.oneThird
+  width: 33.3333%
+  overflow: hidden
+
+.leftAlign
+  float: left
+
+.rightAlign
+  float: right
+
+.spacing
+  margin-top: 40px
+
+.smallSpacing
+  margin-top: 10px
+
+#wrap
+  min-height: 100%
+  width: 960px
+  margin: 0 auto
+
+#main
+  overflow: auto
+  padding-bottom: 70px
+  padding-top: 98px
 
 #header
-	:border-style solid
-	:border-width 0px 0px 1px 0px
-	:margin-bottom 20px
-	:padding-bottom 10px
+  position: fixed
+  width: 100%
+  left: 0px
+  background: #FFF
+  box-shadow: 0px 0px 5px #333
+  height: 78px
+  overflow: hidden
+  z-index: 1000000
+  h1.logo
+    font-family: 'Lobster', sans-serif
+    font-size: 3em
+    color: #4dbce9
+    float: left
+    margin-left: 20px
+    line-height: 68px
+    font-weight: normal
+    padding: 0px
+  ul.loginNav
+    overflow: hidden
+    float: right
+    margin-right: 20px
+    list-style-type: none
+    margin-top: 30px
+    li
+      float: left
+      border-left: 1px solid #CCC
+      padding: 0px 5px
+      font-size: 0.85em
+      &:first-child
+        border-left: none
+        font-weight: bold
+
+#footer
+  position: relative
+  margin: 0 auto
+  margin-top: -50px
+  height: 50px
+  width: 960px
+  clear: both
+  overflow: hidden
+  line-height: 50px
+  text-align: center
+  z-index: 1000000
+  p
+    font-size: 0.65em
+
+body:before
+  content: ""
+  height: 100%
+  float: left
+  width: 0
+  margin-top: -32767px
+
+\::-moz-selection, ::selection
+  background: #666
+  color: #FFF
+  text-shadow: none
+
+input
+  &[type=text], &[type=password]
+    width: 100%
+    background: #FFF
+    box-shadow: 0px 0px 5px #666 inset
+    height: 65px
+    padding: 0px 20px
+    font-size: 1.5em
+    margin-top: 20px
+    text-shadow: 1px 1px 0px #EEE
+    margin-left: -20px
+  &[type=submit], &[type=button]
+    cursor: pointer
+    background: #4dbce9
+    color: #FFF
+    padding: 5px 15px
+    border: 2px solid #26ade4
+    font-size: 2em
+    font-weight: bold
+    margin-top: 20px
+    margin-right: -20px
+  &[type=submit]:hover, &[type=button]:hover
+    background: #66c3e9
+    border: 2px solid #4dbce9
+
+/* Home
+
+#homeSearch fieldset, #addEventForm fieldset
+  position: relative
+  width: 800px
+  display: block
+  margin: 0 auto
+  height: 65px
+  margin-bottom: 30px
+
+#homeSearch fieldset
+  margin-bottom: 20px
+
+#homeSubmit
+  position: absolute
+  right: 0px
+  top: 30px
+  width: 55px
+  height: 47px
+  background: url(search.png) no-repeat
+  border: none
+  margin-top: 0px
+  margin-right: 0px
+  &:hover
+    background: url(search-hover.png) no-repeat
+  &[disabled]
+    background: url(search-gray.png) no-repeat
+    cursor: default
+
+#addEvent
+  float: right
+
+/* Login/Signup
+
+#login_user fieldset, #new_user fieldset
+  width: 400px
+  display: block
+  margin: 0 auto
+
+#login_user fieldset:after, #new_user fieldset:after
+  clear: both
+
+#login_user input[type=submit], #new_user input[type=submit]
+  float: right
 
 .error_messages
-	:border-style solid
-	:border-width 1px
-	:border-color #DE1D37
-	:margin-bottom 10px
-	h1 	
-		:margin 0
-		:padding 5px
-		:background #DE1D37
-		:font-size 14px
-		:color #FFF
+  width: 400px
+  display: block
+  margin: 0 auto
+  margin-top: 20px
+  background: #FFF
+  padding: 20px
+  box-shadow: 0px 0px 5px #666 inset
+  h4
+    text-align: center
+  li:before
+    content: "\00BB \0020"
+    padding-right: 5px
+    color: #4dbce9
+  ul
+    list-style-type: none
+
+/* Results
+
+.searchResults
+  list-style-type: none
+  border: 1px solid #CCC
+  width: 840px
+  display: block
+  margin: 0 auto
+  margin-top: 20px
+  li
+    width: 800px
+    border-top: 1px solid #CCC
+    max-height: 90px
+    background: #FFF
+    padding: 20px
+    overflow: hidden
+    a
+      display: block
+      height: 100%
+      width: 100%
+      color: #000
+    &:first-child
+      background: #4dbce9
+      text-align: center
+      border-top: none
+      height: 10px
+      position: relative
+      overflow: visible
+      img
+        &.leftBanner
+          position: absolute
+          left: -31px
+          top: -1px
+        &.rightBanner
+          position: absolute
+          right: -31px
+          top: -1px
+      p
+        color: #FFF
+        font-size: 1.5em
+        margin-top: -10px
+    div.left
+      float: left
+      width: 33.3333%
+    span
+      &.title
+        font-weight: bold
+        display: block
+      &.time, &.address
+        font-size: 0.9em
+        display: block
+    p.description
+      font-size: 0.8em
+      color: #999
+      -webkit-transition: color 0.25s linear
+      -moz-transition: color 0.25s linear
+      -o-transition: color 0.25s linear
+      transition: color 0.25s linear
+    &:hover p.description
+      color: #000
+    div.right
+      float: right
+      width: 66.6666%
+
+/* Event
+
+#goingForm
+  margin-top: 20px
+
+.numPeople
+  font-weight: bold
+  margin-top: 10px
+
+.host
+  margin-top: 5px
+  a
+    font-weight: bold
+
+/* User/Edit User
+
+#uploadPicForm
+  float: right
+  margin-right: 20px
+  margin-top: -21px
+
+#uploadPicButton
+  width: 302px
+
+#editUserForm
+  float: right
+  margin-right: 20px
+
+#editMeForm
+  width: 400px
+  margin-left: 20px
+
+#editMeSubmit
+  float: right
+
+.eventsList
+  list-style-type: none
+  border: 1px solid #CCC
+  li
+    height: 30px
+    line-height: 30px
+    border-top: 1px solid #CCC
+    padding: 5px 10px
+    background: #FFF
+    &:first-child
+      border-top: none
+  a
+    display: block
+    width: 100%
+    height: 100%
