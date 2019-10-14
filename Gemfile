@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.17'
 gem 'pg'
 gem 'haml'
 gem 'cancan', '1.6.8'
